@@ -16,6 +16,12 @@ set smartcase
 "automatically set markdown files readable linewidth 
 au BufRead,BufNewFile *.md setlocal textwidth=80
 au BufRead,BufNewFile *.md setlocal wrap
+"       AUTOINSTALL VIM-PLUG
+       if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
 "       CURSOR SETTINGS
 let &t_SI.="\e[1 q" "SI = INSERT mode
 let &t_EI.="\e[2 q" "EI = NORMAL mode (ELSE)
